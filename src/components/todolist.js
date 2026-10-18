@@ -38,7 +38,7 @@ export default function Todolist() {
       if (storageTodos) {
         setTodos(storageTodos);
       }
-  }, []);
+  }, [setTodos]);
 
   function handleAddClick() {
     const newTodo = {
@@ -101,7 +101,7 @@ export default function Todolist() {
                 onClick={() => {
                   handleAddClick();
                 }}
-                disabled={titleInput.length == 0}
+                disabled={titleInput.length === 0}
               >
                 Add
               </Button>
