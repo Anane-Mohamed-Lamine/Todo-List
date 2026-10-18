@@ -1,0 +1,18 @@
+.iconButton {
+  transition: all 0.2s !important;
+}
+
+.iconButton:hover {
+  background-color: #a2a2a2 !important;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4) !important;
+}
+
+.todoCard {
+  transition: all 0.2s !important;
+}
+
+.todoCard:hover {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4) !important;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
