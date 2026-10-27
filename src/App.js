@@ -4,6 +4,8 @@ import { v4 as uuidv4 } from 'uuid';
 import { useState } from 'react';
 import { TodosContext } from './contexts/todosContext';
 import { createTheme , ThemeProvider } from '@mui/material/styles';
+import  MySnackBar from './components/MySnackBar';
+import { ToastContext } from './contexts/ToastContext';
 
 const theme = createTheme({
   palette: {
@@ -39,9 +41,21 @@ const initialtodos = [
 
 function App() {
   const [todos, setTodos] = useState(initialtodos);
+  const [open, setOpen] = useState(false);
+  const [message, setMessage] = useState("");
 
+
+  function showHideToast(message){
+    setMessage(message); 
+    setOpen(true)
+    setTimeout(() => {
+      setOpen(false)
+    } , 2000 )
+  }
   return (
+    <>
     <ThemeProvider theme={theme}>
+      <ToastContext.Provider value={{ showHideToast }}>
       <div
         className="App"
         style={{
@@ -56,7 +70,10 @@ function App() {
           <Todolist />
         </TodosContext.Provider>
       </div>
+      </ToastContext.Provider>
     </ThemeProvider>
+    <MySnackBar open={open} message={message}/>
+    </>
   );
 }
 
